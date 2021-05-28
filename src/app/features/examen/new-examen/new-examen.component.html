@@ -1,0 +1,73 @@
+<form #f="ngForm"
+      (ngSubmit)="f.form.valid && valider()">
+  <div class="card">
+    <div class="card-header">
+      <h4 class="card-title mb-0">{{title}}</h4>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="form-group col-sm-6">
+          <label>Libelle</label>
+          <input type="text" [(ngModel)]="examen.libelle" class="form-control"
+                    #libelle="ngModel" name="libelle" placeholder="Libelle" required>
+          <div *ngIf="f.submitted && libelle.invalid" class="form-text text-danger">
+            Libelle réquis
+          </div>
+        </div>
+        <div class="form-group col-sm-6">
+          <label>Thème</label>
+          <select class="form-control"
+                  [(ngModel)]="examen.theme"
+
+                  [compareWith]="compareFn"
+                  placeholder="Select théme"   #theme="ngModel"  name="theme" required>
+
+            <option *ngFor="let th of themes" [ngValue]="th">{{th.libelle }}</option>
+          </select>
+          <div *ngIf="f.submitted && theme.invalid" class="form-text text-danger">
+            Thème réquis
+          </div>
+        </div>
+        <div class="form-group col-sm-6">
+          <label>Date d'expiration</label>
+          <input type="date" [(ngModel)]="examen.dateExpiration" [min]="minDate" class="form-control"
+                 placeholder="Date d'expiration"   #dateExpiration="ngModel"
+                 name="dateExpiration" [required]="true">
+          <div *ngIf="f.submitted && dateExpiration.invalid" class="form-text text-danger">
+            Date d'expiration réquis
+          </div>
+        </div>
+        <div class="form-group col-sm-6">
+          <label >Durée</label>
+          <input [(ngModel)]="examen.duree" class="form-control" pKeyFilter="pint"
+                         placeholder="Durée"     #duree="ngModel"  name="duree" [required]="true">
+
+          <div *ngIf="f.submitted && duree.invalid" class="form-text text-danger">
+            Durée réquis
+          </div>
+        </div>
+
+
+        <div class="form-group col-sm-6">
+          <label >Nombre des questions</label>
+          <input class="form-control" pKeyFilter="pint" [(ngModel)]="examen.nbrQuestion"
+                         placeholder="Nombre des questions"     #nbrQuestion="ngModel"  name="nbrQuestion" [required]="true">
+
+          <div *ngIf="f.submitted && nbrQuestion.invalid" class="form-text text-danger">
+            Nombre des questions réquis
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="card-footer ">
+      <div class="fa-pull-right">
+        <button class="btn btn-danger mr-2" (click)="annuler()" type="reset">Annuler</button>
+        <button class="btn btn-success" type="submit" *ngIf="!id">Ajouter</button>
+        <button class="btn btn-warning" type="submit" *ngIf="id">Modifier</button>
+      </div>
+    </div>
+  </div>
+</form>
+

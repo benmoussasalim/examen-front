@@ -1,0 +1,49 @@
+
+  <div class="card">
+    <div class="card-header">
+      <button (click)="clickAdd()" class="btn btn-success float-right" type="button" >
+        <i class="fa fa-plus"></i>
+        Nouvelle Réponse
+      </button>
+    </div>
+    <div class="card-body">
+      <div class="form-group" *ngFor="let reponse of reponses; let i=index">
+        <label>Réponse {{i+1}} </label>
+        <div class="input-group  col-sm-12">
+          <div class="input-group-prepend">
+            <div class="input-group-text">
+              <div>
+                <input *ngIf="question.choixMultiple" type="checkbox" name="correct"
+                       [(ngModel)]="reponse.correct">
+                <input *ngIf="!question.choixMultiple" type="checkbox" name="correct"
+                   [(ngModel)]="reponse.correct" (ngModelChange)="checkSingle(reponse)" >
+              </div>
+            </div>
+          </div>
+          <input class="form-control" [(ngModel)]="reponse.libelle" required #lib="ngModel" name="libelle">
+          <div class="input-group-prepend"  *ngIf="reponses.length>2">
+            <div class="input-group-text">
+              <div>
+          <a
+
+                  (click)="removeReponse(i, reponse.id)"
+                 >
+            <i class="pi pi-times" style="color: red"></i>
+          </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="card-footer ">
+      <div class="fa-pull-right">
+        <button class="btn btn-danger mr-2"  (click)="annuler()" type="reset">Annuler</button>
+        <button class="btn btn-success"  type="submit"  (click)="addReponses()">Valider</button>
+
+      </div>
+    </div>
+  </div>
+

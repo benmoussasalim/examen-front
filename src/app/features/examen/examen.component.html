@@ -1,0 +1,62 @@
+<div class="card">
+  <div class="card-header">
+
+    <button (click)="clickAdd()" class="btn btn-success float-right">
+      <i class="fa fa-plus"></i>
+      Nouveau Examen
+    </button>
+  </div>
+  <div class="card-body">
+    <p-table #dt [value]="examens" dataKey="id"
+
+             [globalFilterFields]="['libelle', 'theme.libelle','dateExpiration']">
+
+
+      <ng-template pTemplate="caption">
+        <div class="p-d-flex">
+
+
+          <span class="p-input-icon-left p-ml-auto">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt.filterGlobal($any($event.target).value, 'contains')"
+                           placeholder="Chercher" />
+                </span>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Libelle</th>
+          <th>Thème</th>
+          <th >Date de création</th>
+          <th >Date d'expiration</th>
+          <th width="8%">Durée</th>
+          <th >Nombre de questions</th>
+          <th width="13%">Opérations</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-examen>
+        <tr >
+          <td>{{examen.libelle}}</td>
+          <td>{{examen.theme.libelle}}</td>
+          <td>{{examen.dateCreation | date: 'dd/MM/yyyy'}}</td>
+          <td>{{examen.dateExpiration | date: 'dd/MM/yyyy'}}</td>
+          <td>{{examen.duree}}</td>
+          <td>{{examen.nbrQuestion}}</td>
+          <td>
+            <a (click)="confirm($event,examen.id)" class="mr-2">
+              <i  class="fa fa-trash-alt" style="color: red" ></i>
+            </a>
+
+
+            <a (click)="clickEdit(examen.id)" class="mr-2">
+              <i class="fa fa-pencil-alt" style="color: darkblue"></i>
+            </a>
+
+
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>
+

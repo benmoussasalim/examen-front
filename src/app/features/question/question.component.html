@@ -1,0 +1,64 @@
+<div class="card">
+  <div class="card-header">
+
+    <button (click)="clickAdd()" class="btn btn-success float-right">
+      <i class="fa fa-plus"></i>
+      Nouveau question
+    </button>
+  </div>
+  <div class="card-body">
+    <p-table #dt [value]="questions" dataKey="id"
+
+             [globalFilterFields]="['theme.libelle']">
+
+
+      <ng-template pTemplate="caption">
+        <div class="p-d-flex">
+
+
+          <span class="p-input-icon-left p-ml-auto">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt.filterGlobal($any($event.target).value, 'contains')"
+                           placeholder="Chercher" />
+                </span>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Libelle</th>
+
+          <th width="12%">Théme</th>
+          <th width="10%">Multiple</th>
+          <th width="13%">Opérations</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-question>
+        <tr >
+          <td>
+            <textarea class="form-control" rows="5" [(ngModel)]="question.libelle" readonly></textarea>
+          </td>
+
+          <td>
+
+            {{question?.theme.libelle}}</td>
+          <td>{{question?.choixMultiple? 'Oui': 'Non'}}</td>
+          <td>
+            <a (click)="confirm($event,question.id)" class="mr-2">
+              <i  class="fa fa-trash-alt" style="color: red" ></i>
+            </a>
+
+
+              <a (click)="clickEdit(question.id)" class="mr-2">
+                <i class="fa fa-pencil-alt" style="color: darkblue"></i>
+              </a>
+
+            <a  routerLink="reponse/{{question.id}}" class="mr-2">
+              <i class="fas fa-book" style="color: orange"></i>
+            </a>
+
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>

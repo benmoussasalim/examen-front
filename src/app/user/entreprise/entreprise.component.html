@@ -1,0 +1,46 @@
+<div class="card">
+  <div class="card-header">
+
+  </div>
+  <div class="card-body">
+    <p-table #dt [value]="entreprises" dataKey="id"
+
+             [globalFilterFields]="['raisonSociale', 'matriculeFiscale']">
+
+
+      <ng-template pTemplate="caption">
+        <div class="p-d-flex">
+
+
+          <span class="p-input-icon-left p-ml-auto">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt.filterGlobal($any($event.target).value, 'contains')"
+                           placeholder="Chercher" />
+                </span>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Raison sociale</th>
+          <th>Matricule fiscale</th>
+          <th>Email</th>
+          <th>Adresse</th>
+          <th width="12%">Télèphone</th>
+          <th width="12%">Etat</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-entreprise>
+        <tr >
+          <td>{{entreprise.raisonSociale}}</td>
+          <td>{{entreprise.matriculeFiscale}}</td>
+          <td>{{entreprise.email}}</td>
+          <td>{{entreprise.adresse}}</td>
+          <td>{{entreprise.telephone}}</td>
+          <td>
+            <p-inputSwitch [(ngModel)]="entreprise.enabled" (onChange)="changeState(entreprise)"></p-inputSwitch>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>

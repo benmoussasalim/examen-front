@@ -1,0 +1,56 @@
+<form #f="ngForm"
+      (ngSubmit)="f.form.valid && valider()">
+  <div class="card">
+    <div class="card-header">
+      <h4 class="card-title mb-0">{{title}}</h4>
+    </div>
+    <div class="card-body">
+      <div class="row">
+
+        <div class="form-group col-sm-6">
+          <label>Théme</label>
+
+          <select class="form-control"
+                  [compareWith]="compareFn"
+                  [(ngModel)]="question.theme"
+                  placeholder="Select théme"   #theme="ngModel"  [required]="true" name="theme">
+            <option *ngFor="let th of themes" [ngValue]="th">{{th.libelle }}</option>
+          </select>
+          <small *ngIf="f.submitted && theme.invalid" class="form-text text-danger">
+            Théme réquis
+          </small>
+        </div>
+
+
+
+        <div class="form-group col-sm-6">
+
+          <label>Choix multiple</label>
+          <br>
+          <p-inputSwitch [(ngModel)]="question.choixMultiple" #choixMultiple="ngModel"
+                         name="choixMultiple" >
+          </p-inputSwitch>
+          </div>
+
+
+        <div class="form-group col-sm-12">
+          <label>Libelle</label>
+          <textarea rows="5" cols="30" pInputTextarea [(ngModel)]="question.libelle" class="form-control"
+                    #libelle="ngModel"  name="libelle" placeholder="Libelle" required></textarea>
+          <div *ngIf="f.submitted && libelle.invalid" class="form-text text-danger">
+            Libelle réquis
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="card-footer ">
+      <div class="fa-pull-right">
+        <button class="btn btn-danger mr-2"  (click)="annuler()" type="reset">Annuler</button>
+        <button class="btn btn-success"  type="submit" *ngIf="!id">Ajouter</button>
+        <button class="btn btn-warning"  type="submit" *ngIf="id">Modifier</button>
+      </div>
+    </div>
+  </div>
+</form>
