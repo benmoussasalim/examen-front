@@ -1,0 +1,57 @@
+
+<div class="card">
+  <div class="card-header">Recherche Avancée</div>
+  <div class="card-body row">
+    <div class="form-group col-sm-4">
+      <label>Libelle</label>
+      <input class="form-control" [(ngModel)]="libelle">
+    </div>
+
+    <div class="form-group col-sm-4">
+      <label>Thème</label>
+      <select class="form-control" [(ngModel)]="selectedTheme">
+        <option [ngValue]="null">Tous </option>
+        <option [ngValue]="theme" *ngFor="let theme of themes">{{theme.libelle}}</option>
+      </select>
+    </div>
+
+    <div class="form-group col-sm-4">
+      <label>Entreprise</label>
+      <select class="form-control" [(ngModel)]="selectedEntreprise">
+        <option [ngValue]="null">Tous </option>
+        <option [ngValue]="entreprise" *ngFor="let entreprise of entreprises">{{entreprise.raisonSociale}}</option>
+      </select>
+    </div>
+
+  </div>
+  <div class="card-footer">
+    <button class="btn btn-secondary float-right" (click)="getAll()" >Filtrer</button>
+  </div>
+</div>
+
+<div class="row">
+
+
+  <div class="col-lg-4" *ngFor="let exam of examens">
+    <div class="card">
+      <img alt="Card image cap" class="card-img-top img-responsive"
+           src="{{exam.picture? 'data:image/jpeg;base64,'+exam.picture: 'assets/images/images.png'}}" style="width: 337px; height: 224px">
+      <div class="card-body">
+        <div class="d-flex no-block align-items-center m-b-15"><span><i class="ti-calendar"></i>
+          {{exam.examen.dateCreation | date : 'dd/MMMM/yyyy'}}</span>
+          <div class="ml-auto">
+          <span><i class="ti-calendar"></i>
+          {{exam.examen.dateExpiration | date : 'dd/MMMM/yyyy'}}</span>
+          </div>
+        </div>
+        <h3 class="font-normal">{{exam.examen.libelle}} ({{exam.examen.theme.libelle}})</h3>
+        <p class="m-b-0 m-t-10">Entreprise: {{exam.examen.entreprise.raisonSociale}}</p>
+        <p class="m-b-0 m-t-10">Durée: {{exam.examen.duree}} Min</p>
+        <p class="m-b-0 m-t-10">Nombre des question: {{exam.examen.nbrQuestion}}</p>
+        <button class="btn btn-success btn-rounded waves-effect waves-light m-t-20">Passer examen</button>
+      </div>
+    </div>
+  </div>
+
+
+</div>
