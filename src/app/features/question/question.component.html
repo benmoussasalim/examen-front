@@ -9,7 +9,7 @@
   <div class="card-body">
     <p-table #dt [value]="questions" dataKey="id"
 
-             [globalFilterFields]="['theme.libelle']">
+             [globalFilterFields]="['libelle','theme.libelle']">
 
 
       <ng-template pTemplate="caption">

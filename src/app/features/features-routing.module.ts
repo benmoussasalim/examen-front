@@ -7,16 +7,19 @@ import {ExamenComponent} from "./examen/examen.component";
 import {NewExamenComponent} from "./examen/new-examen/new-examen.component";
 import {AdminGuard} from "../shared/guards/admin.guard";
 import {EntrepriseGuard} from "../shared/guards/entreprise.guard";
+import {CandidatGuard} from "../shared/guards/candidat.guard";
+import {ExamenNotExpiredComponent} from "./examen-not-expired/examen-not-expired.component";
 
 const routes: Routes = [
   {path: 'question', component: QuestionComponent, canActivate: [AdminGuard]},
-  {path: 'question/new', component: NewQuestionComponent , canActivate: [AdminGuard]},
-  {path: 'question/edit/:id', component: NewQuestionComponent , canActivate: [AdminGuard]},
-  {path: 'question/questionbytheme/:id', component: QuestionComponent , canActivate: [AdminGuard]},
+  {path: 'question/new', component: NewQuestionComponent, canActivate: [AdminGuard]},
+  {path: 'question/edit/:id', component: NewQuestionComponent, canActivate: [AdminGuard]},
+  {path: 'question/questionbytheme/:id', component: QuestionComponent, canActivate: [AdminGuard]},
   {path: 'question/reponse/:id', component: ReponseComponent, canActivate: [AdminGuard]},
   {path: 'examen', component: ExamenComponent, canActivate: [EntrepriseGuard]},
   {path: 'examen/new', component: NewExamenComponent, canActivate: [EntrepriseGuard]},
-  {path: 'examen/edit/:id', component: NewExamenComponent, canActivate: [EntrepriseGuard]}
+  {path: 'examen/edit/:id', component: NewExamenComponent, canActivate: [EntrepriseGuard]},
+  {path: 'examen/not-expired', component: ExamenNotExpiredComponent , canActivate: [CandidatGuard]},
 
 ];
 
@@ -26,6 +29,6 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 
-export class FeaturesRoutingModule{
+export class FeaturesRoutingModule {
 
 }

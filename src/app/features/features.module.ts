@@ -7,6 +7,7 @@ import { NewQuestionComponent } from './question/new-question/new-question.compo
 import { ReponseComponent } from './question/reponse/reponse.component';
 import { ExamenComponent } from './examen/examen.component';
 import { NewExamenComponent } from './examen/new-examen/new-examen.component';
+import { ExamenNotExpiredComponent } from './examen-not-expired/examen-not-expired.component';
 
 
 
@@ -16,7 +17,8 @@ import { NewExamenComponent } from './examen/new-examen/new-examen.component';
     NewQuestionComponent,
     ReponseComponent,
     ExamenComponent,
-    NewExamenComponent
+    NewExamenComponent,
+    ExamenNotExpiredComponent
   ],
   imports: [
     CommonModule,

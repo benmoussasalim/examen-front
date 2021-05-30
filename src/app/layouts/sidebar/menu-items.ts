@@ -45,7 +45,7 @@ export const ROUTES: RouteInfo[] = [
     class: 'nav-small-cap',
     extralink: true,
     submenu: [],
-    role: ['ROLE_ADMIN', 'ROLE_ENTREPRISE']
+    role: ['ROLE_ADMIN', 'ROLE_ENTREPRISE', 'ROLE_CANDIDAT']
   },
   {
     path: '/app/features/question',
@@ -64,6 +64,15 @@ export const ROUTES: RouteInfo[] = [
     extralink: false,
     submenu: [],
     role: ['ROLE_ENTREPRISE']
+  },
+  {
+    path: '/app/features/examen/not-expired',
+    title: 'Examens',
+    icon: 'fas fa-book',
+    class: '',
+    extralink: false,
+    submenu: [],
+    role: ['ROLE_CANDIDAT']
   },
   {
     path: '',

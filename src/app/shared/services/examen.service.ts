@@ -41,4 +41,7 @@ export class ExamenService {
   public getByDateExpiration(date: any): Observable<Examen[]> {
     return this.http.get<Examen[]>(this.url+'/examenbydateexpiration/{date}?date='+date);
   }
+  public getNotExpired(filterRequest: any): Observable<any[]> {
+    return this.http.post<any[]>(this.url+'/examenNotExpired', filterRequest);
+  }
 }

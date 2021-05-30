@@ -40,9 +40,11 @@ export class NavigationComponent implements OnInit, AfterViewInit {
     this.user = JSON.parse(localStorage.getItem('currentUser')!);
     this.userService.getFiles(this.user.id).subscribe(data => {
 
+      if(data?.picture) {
+        const base64Data = data.picture;
+        this.user.image = 'data:image/jpeg;base64,' + base64Data;
+      }
 
-      const base64Data = data.picture;
-      this.user.image = 'data:image/jpeg;base64,' + base64Data;
 
     }, ex => {
       console.log(ex);
