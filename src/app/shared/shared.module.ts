@@ -15,6 +15,8 @@ import {InputNumberModule} from "primeng/inputnumber";
 import {NgxPermissionsModule} from "ngx-permissions";
 import {CarouselModule} from "primeng/carousel";
 import {AutosizeModule} from "ngx-autosize";
+import {RadioButtonModule} from "primeng/radiobutton";
+import {CheckboxModule} from "primeng/checkbox";
 
 
 
@@ -39,7 +41,10 @@ import {AutosizeModule} from "ngx-autosize";
     InputNumberModule,
     NgxPermissionsModule,
     CarouselModule,
-    AutosizeModule
+    AutosizeModule,
+    RadioButtonModule,
+    CheckboxModule
+
   ]
 })
 export class SharedModule { }

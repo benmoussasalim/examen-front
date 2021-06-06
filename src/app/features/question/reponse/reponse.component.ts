@@ -38,10 +38,13 @@ export class ReponseComponent implements OnInit {
         if (data.length > 0) {
           this.reponses = data;
         } else {
+          console.log('*******************');
           const rep1 = new Reponse();
           rep1.question = this.question;
+          rep1.correct = false;
           const rep2 = new Reponse();
           rep2.question = this.question;
+          rep2.correct = false;
           this.reponses.push(rep1);
           this.reponses.push(rep2);
         }
@@ -52,6 +55,7 @@ export class ReponseComponent implements OnInit {
   clickAdd(): void {
     const rep = new Reponse();
     rep.question = this.question;
+    rep.correct = false;
     this.reponses.push(rep);
   }
 
@@ -104,12 +108,10 @@ export class ReponseComponent implements OnInit {
   checkSingle(reponse: Reponse): void {
 
     this.reponses = this.reponses.map(resp => {
-      if (reponse.id !== resp.id) {
-        resp.correct = false;
-      }
 
+      resp.correct = false;
       return resp;
     });
-    console.log(this.reponses);
+    reponse.correct = true;
   }
 }
