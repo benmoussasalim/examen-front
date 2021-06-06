@@ -13,6 +13,8 @@ import {DropdownModule} from "primeng/dropdown";
 import {CalendarModule} from "primeng/calendar";
 import {InputNumberModule} from "primeng/inputnumber";
 import {NgxPermissionsModule} from "ngx-permissions";
+import {CarouselModule} from "primeng/carousel";
+import {AutosizeModule} from "ngx-autosize";
 
 
 
@@ -36,6 +38,8 @@ import {NgxPermissionsModule} from "ngx-permissions";
     CalendarModule,
     InputNumberModule,
     NgxPermissionsModule,
+    CarouselModule,
+    AutosizeModule
   ]
 })
 export class SharedModule { }

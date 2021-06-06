@@ -8,6 +8,7 @@ import { ReponseComponent } from './question/reponse/reponse.component';
 import { ExamenComponent } from './examen/examen.component';
 import { NewExamenComponent } from './examen/new-examen/new-examen.component';
 import { ExamenNotExpiredComponent } from './examen-not-expired/examen-not-expired.component';
+import { ParticipationComponent } from './examen-not-expired/participation/participation.component';
 
 
 
@@ -18,7 +19,8 @@ import { ExamenNotExpiredComponent } from './examen-not-expired/examen-not-expir
     ReponseComponent,
     ExamenComponent,
     NewExamenComponent,
-    ExamenNotExpiredComponent
+    ExamenNotExpiredComponent,
+    ParticipationComponent
   ],
   imports: [
     CommonModule,
