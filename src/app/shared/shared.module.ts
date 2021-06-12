@@ -17,8 +17,12 @@ import {CarouselModule} from "primeng/carousel";
 import {AutosizeModule} from "ngx-autosize";
 import {RadioButtonModule} from "primeng/radiobutton";
 import {CheckboxModule} from "primeng/checkbox";
+import {CountdownGlobalConfig, CountdownModule} from "ngx-countdown";
 
-
+function countdownConfigFactory(): CountdownGlobalConfig {
+  // @ts-ignore
+  return { format: 'HH:mm:ss' };
+}
 
 @NgModule({
   declarations: [],
@@ -43,8 +47,11 @@ import {CheckboxModule} from "primeng/checkbox";
     CarouselModule,
     AutosizeModule,
     RadioButtonModule,
-    CheckboxModule
+    CheckboxModule,
+    CountdownModule
 
+  ], providers: [
+    { provide: CountdownGlobalConfig, useFactory: countdownConfigFactory }
   ]
 })
 export class SharedModule { }

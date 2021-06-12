@@ -12,6 +12,9 @@ import {DatePipe, registerLocaleData} from "@angular/common";
 import {JwtInterceptorService} from "./shared/services/jwt-interceptor.service";
 import {NgxPermissionsModule} from "ngx-permissions";
 import localeFr from '@angular/common/locales/fr';
+import {ConfirmPopupModule} from "primeng/confirmpopup";
+import {ConfirmDialogModule} from "primeng/confirmdialog";
+import {ToastModule} from "primeng/toast";
 registerLocaleData(localeFr, 'fr');
 @NgModule({
   declarations: [
@@ -22,7 +25,9 @@ registerLocaleData(localeFr, 'fr');
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    SharedModule,
+    ConfirmPopupModule,
+    ConfirmDialogModule,
+    ToastModule,
     BrowserAnimationsModule,
     NgbModule,
     NgxPermissionsModule.forRoot()

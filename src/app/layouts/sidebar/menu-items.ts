@@ -75,6 +75,15 @@ export const ROUTES: RouteInfo[] = [
     role: ['ROLE_CANDIDAT']
   },
   {
+    path: '/app/features/examen/participations',
+    title: 'Mes participations',
+    icon: 'fas fa-book',
+    class: '',
+    extralink: false,
+    submenu: [],
+    role: ['ROLE_CANDIDAT']
+  },
+  {
     path: '',
     title: 'Paramètrages',
     icon: 'mdi mdi-dots-horizontal',

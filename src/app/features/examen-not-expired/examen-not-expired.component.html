@@ -48,8 +48,16 @@
         <p class="m-b-0 m-t-10">Entreprise: {{exam.examen.entreprise.raisonSociale}}</p>
         <p class="m-b-0 m-t-10">Durée: {{exam.examen.duree}} Min</p>
         <p class="m-b-0 m-t-10">Nombre des question: {{exam.examen.nbrQuestion}}</p>
-        <button class="btn btn-success btn-rounded waves-effect waves-light m-t-20"
-        routerLink="participation/{{exam.examen.id}}">Passer examen</button>
+        <button
+          *ngIf="!exam.finished"
+          class="btn btn-success btn-rounded waves-effect waves-light m-t-20"
+          (click)="passerExamen($event, exam.examen.id)">Passer examen</button>
+
+
+        <button
+          *ngIf="exam.finished"
+          class="btn btn-danger btn-rounded waves-effect waves-light m-t-20"
+          routerLink="/app/features/examen/participation/{{exam.examen.id}}/result">Voir résultat</button>
       </div>
     </div>
   </div>

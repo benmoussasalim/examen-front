@@ -9,6 +9,8 @@ import { ExamenComponent } from './examen/examen.component';
 import { NewExamenComponent } from './examen/new-examen/new-examen.component';
 import { ExamenNotExpiredComponent } from './examen-not-expired/examen-not-expired.component';
 import { ParticipationComponent } from './examen-not-expired/participation/participation.component';
+import { ResultComponent } from './examen-not-expired/participation/result/result.component';
+import { ParticipationsComponent } from './participations/participations.component';
 
 
 
@@ -20,7 +22,9 @@ import { ParticipationComponent } from './examen-not-expired/participation/parti
     ExamenComponent,
     NewExamenComponent,
     ExamenNotExpiredComponent,
-    ParticipationComponent
+    ParticipationComponent,
+    ResultComponent,
+    ParticipationsComponent
   ],
   imports: [
     CommonModule,
