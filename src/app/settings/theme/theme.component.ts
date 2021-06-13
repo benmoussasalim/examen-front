@@ -3,7 +3,7 @@ import {ThemeService} from "../../shared/services/theme.service";
 import {Theme} from "../../shared/model/theme";
 import {Router} from "@angular/router";
 import {ToastService} from "../../shared/services/toast.service";
-import {ConfirmationService, MessageService} from "primeng/api";
+import {ConfirmationService} from "primeng/api";
 
 @Component({
   selector: 'app-theme',
@@ -76,10 +76,12 @@ updateTheme(){
     Object.assign(this.theme, theme);
   }
 
-  confirm(event: Event,id : number) {
+  confirm(event: any,id : number) {
     this.confirmationService.confirm({
-      target: event.target as EventTarget,
-      message: 'Are you sure that you want to proceed?',
+      target: event.target,
+      acceptLabel: 'Oui',
+      rejectLabel: 'Non',
+      message: 'Vous etes sur de supprimer cet thème?',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         this.deleteTheme(id);

@@ -18,6 +18,7 @@ import {AutosizeModule} from "ngx-autosize";
 import {RadioButtonModule} from "primeng/radiobutton";
 import {CheckboxModule} from "primeng/checkbox";
 import {CountdownGlobalConfig, CountdownModule} from "ngx-countdown";
+import {NgxPrintModule} from "ngx-print";
 
 function countdownConfigFactory(): CountdownGlobalConfig {
   // @ts-ignore
@@ -48,7 +49,8 @@ function countdownConfigFactory(): CountdownGlobalConfig {
     AutosizeModule,
     RadioButtonModule,
     CheckboxModule,
-    CountdownModule
+    CountdownModule,
+    NgxPrintModule
 
   ], providers: [
     { provide: CountdownGlobalConfig, useFactory: countdownConfigFactory }

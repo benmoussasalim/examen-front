@@ -66,6 +66,15 @@ export const ROUTES: RouteInfo[] = [
     role: ['ROLE_ENTREPRISE']
   },
   {
+    path: '/app/features/participation-entreprise',
+    title: 'Participations',
+    icon: 'fas fa-book',
+    class: '',
+    extralink: false,
+    submenu: [],
+    role: ['ROLE_ENTREPRISE']
+  },
+  {
     path: '/app/features/examen/not-expired',
     title: 'Examens',
     icon: 'fas fa-book',
@@ -75,7 +84,7 @@ export const ROUTES: RouteInfo[] = [
     role: ['ROLE_CANDIDAT']
   },
   {
-    path: '/app/features/examen/participations',
+    path: '/app/features/participation-candidat',
     title: 'Mes participations',
     icon: 'fas fa-book',
     class: '',

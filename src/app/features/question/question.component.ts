@@ -11,7 +11,6 @@ import {Theme} from "../../shared/model/theme";
   selector: 'app-question',
   templateUrl: './question.component.html',
   styleUrls: ['./question.component.scss'],
-  providers: [ConfirmationService]
 })
 export class QuestionComponent implements OnInit {
   questions: Question[];
@@ -53,13 +52,15 @@ export class QuestionComponent implements OnInit {
       ex => console.log(ex));
   }
 
-  confirm(event: Event,id : number) {
+  confirm(event: any,id : number) {
     this.confirmationService.confirm({
-      target: event.target as EventTarget,
-      message: 'Are you sure that you want to proceed?',
+      target: event.target,
+      acceptLabel: 'Oui',
+      rejectLabel: 'Non',
+      message: 'Vous etes sur de supprimer cette question?',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
-        this.deleteTheme(id);
+        this.deleteQuestion(id);
         this.router.navigate(['/app/features/question'])
       },
       reject: () => {
@@ -67,7 +68,7 @@ export class QuestionComponent implements OnInit {
       }
     });
   }
-  deleteTheme(id: any) {
+  deleteQuestion(id: any) {
     this.questionService.deletequestion(id).subscribe(res => {
         if (res.success) {
           this.getAll();

@@ -9,9 +9,11 @@ import {AdminGuard} from "../shared/guards/admin.guard";
 import {EntrepriseGuard} from "../shared/guards/entreprise.guard";
 import {CandidatGuard} from "../shared/guards/candidat.guard";
 import {ExamenNotExpiredComponent} from "./examen-not-expired/examen-not-expired.component";
-import {ParticipationComponent} from "./examen-not-expired/participation/participation.component";
-import {ResultComponent} from "./examen-not-expired/participation/result/result.component";
-import {ParticipationsComponent} from "./participations/participations.component";
+import {ParticipationComponent} from "./participation/participation.component";
+import {ResultComponent} from "./participation/result/result.component";
+import {ParticipationCandidatComponent} from "./participation/participation-candidat/participation-candidat.component";
+import {ParticipationEntrepriseComponent} from "./participation/participation-entreprise/participation-entreprise.component";
+import {MeetComponent} from "./participation/meet/meet.component";
 
 const routes: Routes = [
   {path: 'question', component: QuestionComponent, canActivate: [AdminGuard]},
@@ -25,7 +27,10 @@ const routes: Routes = [
   {path: 'examen/not-expired', component: ExamenNotExpiredComponent , canActivate: [CandidatGuard]},
   {path: 'examen/participation/:id', component: ParticipationComponent , canActivate: [CandidatGuard],},
   {path: 'examen/participation/:idExam/result', component: ResultComponent , canActivate: [CandidatGuard],},
-  {path: 'examen/participations', component: ParticipationsComponent , canActivate: [CandidatGuard]},
+  {path: 'participation-candidat', component: ParticipationCandidatComponent , canActivate: [CandidatGuard]},
+  {path: 'participation-entreprise', component: ParticipationEntrepriseComponent , canActivate: [EntrepriseGuard]},
+  {path: 'participation/result/:idExam/:idCandidat', component: ResultComponent , canActivate: [EntrepriseGuard],},
+  {path: 'meet', component: MeetComponent },
 
 ];
 
