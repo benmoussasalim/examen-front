@@ -85,10 +85,6 @@ updateTheme(){
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         this.deleteTheme(id);
-        this.router.navigate(['/app/settings/theme'])
-      },
-      reject: () => {
-        this.router.navigate(['/app/settings/theme'])
       }
     });
   }

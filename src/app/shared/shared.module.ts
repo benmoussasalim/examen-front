@@ -20,6 +20,7 @@ import {CheckboxModule} from "primeng/checkbox";
 import {CountdownGlobalConfig, CountdownModule} from "ngx-countdown";
 import {NgxPrintModule} from "ngx-print";
 
+
 function countdownConfigFactory(): CountdownGlobalConfig {
   // @ts-ignore
   return { format: 'HH:mm:ss' };
@@ -51,7 +52,6 @@ function countdownConfigFactory(): CountdownGlobalConfig {
     CheckboxModule,
     CountdownModule,
     NgxPrintModule
-
   ], providers: [
     { provide: CountdownGlobalConfig, useFactory: countdownConfigFactory }
   ]

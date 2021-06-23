@@ -1,7 +1,15 @@
 import {RouteInfo} from './sidebar.metadata';
 
 export const ROUTES: RouteInfo[] = [
-
+  {
+    path: '/app/dashboard',
+    title: 'Dashboard',
+    icon: 'mdi mdi-dots-horizontal',
+    class: '',
+    extralink: false,
+    submenu: [],
+    role: ['ROLE_ADMIN', 'ROLE_ENTREPRISE', 'ROLE_CANDIDAT']
+  },
   {
     path: '',
     title: 'Personnes',
@@ -31,15 +39,6 @@ export const ROUTES: RouteInfo[] = [
   },
   {
     path: '',
-    title: 'Utilisateurs',
-    icon: ' icon-User',
-    class: '',
-    extralink: false,
-    submenu: [],
-    role: ['ROLE_ADMIN']
-  },
-  {
-    path: '',
     title: 'Fonctionalités',
     icon: 'mdi mdi-dots-horizontal',
     class: 'nav-small-cap',
@@ -59,7 +58,7 @@ export const ROUTES: RouteInfo[] = [
   {
     path: '/app/features/examen',
     title: 'Examens',
-    icon: 'fas fa-book',
+    icon: 'fas fa-file-alt',
     class: '',
     extralink: false,
     submenu: [],
@@ -68,7 +67,7 @@ export const ROUTES: RouteInfo[] = [
   {
     path: '/app/features/participation-entreprise',
     title: 'Participations',
-    icon: 'fas fa-book',
+    icon: 'fas fa-clipboard-list',
     class: '',
     extralink: false,
     submenu: [],
@@ -77,7 +76,7 @@ export const ROUTES: RouteInfo[] = [
   {
     path: '/app/features/examen/not-expired',
     title: 'Examens',
-    icon: 'fas fa-book',
+    icon: 'fas fa-file-alt',
     class: '',
     extralink: false,
     submenu: [],
@@ -86,7 +85,7 @@ export const ROUTES: RouteInfo[] = [
   {
     path: '/app/features/participation-candidat',
     title: 'Mes participations',
-    icon: 'fas fa-book',
+    icon: 'fas fa-clipboard-list',
     class: '',
     extralink: false,
     submenu: [],

@@ -23,6 +23,7 @@
 
       <div class="form-group row ">
         <div class="col-12 ">
+          <label>Nom</label>
           <input class="form-control form-control-lg" type="text" required placeholder="Nom"
                  
                  [(ngModel)]="candidat.nom" name="nom" #nom="ngModel">
@@ -38,6 +39,7 @@
 
       <div class="form-group row ">
         <div class="col-12 ">
+          <label>Prénom</label>
           <input class="form-control form-control-lg" type="text" required placeholder="Prénom"
                  
                  [(ngModel)]="candidat.prenom" name="prenom" #prenom="ngModel">
@@ -53,6 +55,7 @@
 
       <div class="form-group row ">
         <div class="col-12 ">
+          <label>Télèphone</label>
           <input class="form-control form-control-lg" type="text" required placeholder="Téléphone"
                  pKeyFilter="pint"
                  [(ngModel)]="candidat.telephone" name="tel" #tel="ngModel" maxlength="8" minlength="8">
@@ -73,6 +76,7 @@
 
       <div class="form-group row ">
         <div class="col-12 ">
+          <label>Adresse</label>
           <input class="form-control form-control-lg" type="text" required placeholder="Adresse"
                  [(ngModel)]="candidat.adresse" name="adresse" #adresse="ngModel">
         </div>
@@ -88,6 +92,7 @@
 
       <div class="form-group row ">
         <div class="col-12 ">
+          <label>Email</label>
           <input class="form-control form-control-lg" type="email" required email placeholder="Email"
                  pKeyFilter="email"
                  [(ngModel)]="candidat.email" name="email" #email="ngModel">
@@ -130,6 +135,7 @@
 
       <div class="form-group row ">
         <div class="col-12 ">
+          <label>Raison sociale</label>
           <input class="form-control form-control-lg" type="text" required placeholder="Raison sociale"
                  
                  [(ngModel)]="entreprise.raisonSociale" name="raisonSociale" #raisonSociale="ngModel">
@@ -145,6 +151,7 @@
 
       <div class="form-group row ">
         <div class="col-12 ">
+          <label>Matricule fiscale</label>
           <input class="form-control form-control-lg" type="text" required placeholder="Matricule fiscale"
                  
                  [(ngModel)]="entreprise.matriculeFiscale" name="matriculeFiscale" #matriculeFiscale="ngModel">
@@ -160,6 +167,7 @@
 
       <div class="form-group row ">
         <div class="col-12 ">
+          <label>Téléphone</label>
           <input class="form-control form-control-lg" type="text" required  placeholder="Téléphone"
                  pKeyFilter="pint"
                  [(ngModel)]="entreprise.telephone" name="tel" #tel="ngModel" maxlength="8" minlength="8">
@@ -180,6 +188,7 @@
 
       <div class="form-group row ">
         <div class="col-12 ">
+          <label>Adresse</label>
           <input class="form-control form-control-lg" type="text" required  placeholder="Adresse"
                  [(ngModel)]="entreprise.adresse" name="adresse" #adresse="ngModel">
         </div>
@@ -195,6 +204,7 @@
 
       <div class="form-group row ">
         <div class="col-12 ">
+          <label>Email</label>
           <input class="form-control form-control-lg" type="email" required email placeholder="Email"
                  pKeyFilter="email"
                  [(ngModel)]="entreprise.email" name="email" #email="ngModel">

@@ -30,7 +30,7 @@ const routes: Routes = [
   {path: 'participation-candidat', component: ParticipationCandidatComponent , canActivate: [CandidatGuard]},
   {path: 'participation-entreprise', component: ParticipationEntrepriseComponent , canActivate: [EntrepriseGuard]},
   {path: 'participation/result/:idExam/:idCandidat', component: ResultComponent , canActivate: [EntrepriseGuard],},
-  {path: 'meet', component: MeetComponent },
+  {path: 'meet/:room', component: MeetComponent },
 
 ];
 

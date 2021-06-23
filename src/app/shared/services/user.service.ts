@@ -19,6 +19,7 @@ export class UserService {
   public changePassword(password: any): Observable<any> {
     return this.http.patch<any>(this.url, password);
   }
+
   upload(formData:any, id:any): Observable<any> {
     return this.http.post(this.url + '/' + id, formData);
   }

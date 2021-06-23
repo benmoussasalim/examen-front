@@ -1,1 +1,112 @@
-<p>dashboard works!</p>
+<div class="card" *ngxPermissionsOnly="['ROLE_ADMIN']">
+
+
+  <div class="card-body">
+
+
+    <div class="row">
+      <div class="col-sm-12" *ngIf="dataExamenQuestion">
+
+        <p-chart type="bar" [data]="dataExamenQuestion"  [options]="chartOptions"></p-chart>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6" *ngIf="dataEtatEntreprise">
+        <div class="card-title">Etat entreprise</div>
+        <p-chart type="doughnut" [data]="dataEtatEntreprise" ></p-chart>
+      </div>
+
+
+      <div class="col-sm-6" *ngIf="dataEtatCandidat">
+        <div class="card-title">Etat candidat</div>
+        <p-chart type="doughnut" [data]="dataEtatCandidat"> </p-chart>
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="card" *ngxPermissionsOnly="['ROLE_ENTREPRISE']">
+
+
+  <div class="card-body">
+
+
+    <div class="row">
+      <div class="col-sm-12" *ngIf="dataExamenParticipation">
+
+
+        <p-chart type="bar" [data]="dataExamenParticipation" [options]="chartOptions"></p-chart>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6" *ngIf="dataInvitation">
+        <div class="card-title">Invitation</div>
+        <p-chart type="doughnut" [data]="dataInvitation" ></p-chart>
+      </div>
+
+
+      <div class="col-sm-6" *ngIf="dataMention">
+        <div class="card-title">Mention</div>
+        <p-chart type="doughnut" [data]="dataMention"> </p-chart>
+      </div>
+
+    </div>
+
+
+
+
+  </div>
+
+
+</div>
+
+
+
+
+
+
+<div class="card" *ngxPermissionsOnly="['ROLE_CANDIDAT']">
+
+
+  <div class="card-body">
+
+
+
+
+    <div class="row">
+      <div class="col-sm-6" *ngIf="dataInvitation">
+        <div class="card-title">Invitation</div>
+        <p-chart type="doughnut" [data]="dataInvitation" ></p-chart>
+      </div>
+
+
+      <div class="col-sm-6" *ngIf="dataMention">
+        <div class="card-title">Mention</div>
+        <p-chart type="doughnut" [data]="dataMention"> </p-chart>
+      </div>
+
+    </div>
+
+
+
+
+  </div>
+
+
+</div>
+

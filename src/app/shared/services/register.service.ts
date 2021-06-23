@@ -17,4 +17,7 @@ private url = environment.apiUrl + '/register';
   public registerEntreprise(entreprise: any): Observable<any> {
     return this.http.post(this.url + '/entreprise', entreprise);
   }
+  public activatAccount(token: any): Observable<any>{
+  return this.http.get(this.url + '/confirm/' + token);
+  }
 }
