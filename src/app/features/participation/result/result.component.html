@@ -1,0 +1,176 @@
+<div id="print-section">
+  <div class="card">
+
+    <div class="card-header">
+      <label class="card-title">Résultat</label>
+      <button class="float-right btn btn-primary"
+              printSectionId="print-section"
+              [useExistingCss]="true"
+              [printStyle]="{button : {'visibility': 'hidden'}}"
+
+              ngxPrint>
+        <i class="fa fa-print"></i>
+        Imprimer
+      </button>
+    </div>
+    <div class="card-body">
+
+      <div class="row">
+        <div class="col-md-4" *ngxPermissionsOnly="['ROLE_CANDIDAT']">
+          <div class="form-group row">
+            <label class="control-label  col-md-4">Entreprise:</label>
+            <div class="col-md-8"><p class="form-control-static">
+              {{participationResult?.participation?.examen?.entreprise?.raisonSociale}} </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4" *ngxPermissionsOnly="['ROLE_ENTREPRISE']">
+          <div class="form-group row">
+            <label class="control-label  col-md-4">Candidat:</label>
+            <div class="col-md-8"><p class="form-control-static"> {{participationResult?.participation?.candidat?.nom}}
+              {{participationResult?.participation?.candidat?.prenom}} </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group row">
+            <label class="control-label  col-md-5">Thème:</label>
+            <div class="col-md-7"><p class="form-control-static">
+              {{participationResult?.participation?.examen?.theme?.libelle}} </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="form-group row">
+            <label class="control-label  col-md-4">Examen:</label>
+            <div class="col-md-8"><p class="form-control-static">
+              {{participationResult?.participation?.examen?.libelle}} </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="form-group row">
+            <label class="control-label  col-md-4">Durée:</label>
+            <div class="col-md-8"><p class="form-control-static"> {{participationResult?.participation?.examen?.duree}}
+              Min </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group row">
+            <label class="control-label  col-md-5">Nbr Questions:</label>
+            <div class="col-md-7"><p class="form-control-static">
+              {{participationResult?.participation?.examen?.nbrQuestion}} </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="form-group row">
+            <label class="control-label  col-md-4">Date:</label>
+            <div class="col-md-8"><p class="form-control-static">
+              {{participationResult?.participation?.dateParticipation | date: 'dd/MM/yyyy HH:mm'}} </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="form-group row">
+            <label class="control-label  col-md-4">Rép correcte:</label>
+            <div class="col-md-8"><p class="form-control-static"> {{participationResult?.participation?.score}} </p>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-md-4">
+          <div class="form-group row">
+            <label class="control-label  col-md-5">Score:</label>
+            <div class="col-md-7"><p class="form-control-static">
+
+              {{participationResult?.participation?.score/ participationResult?.participation?.examen?.nbrQuestion |
+              percent}}
+
+            </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="form-group row">
+            <label class="control-label  col-md-4">Niveau:</label>
+
+            <div class="col-md-8"><p class="form-control-static"> {{
+              score < 25 ? 'Très faible':
+              score>=25 && score < 50? 'Faible':
+              score>= 50 && score <60 ? 'Passable':
+              score >=60 && score <70 ? 'Bien':
+              score>=70 && score <90? 'Très bien': 'Excellent' }} </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+    <ng-container *ngIf="showFooter">
+      <div class="card-footer" *ngxPermissionsOnly="['ROLE_ENTREPRISE']">
+        <div class="float-right">
+          <button class="btn btn-danger mr-2" (click)="rejeter($event)">Rejeter</button>
+          <button class="btn btn-success" (click)="openDialog()">Accepter</button>
+        </div>
+
+      </div>
+    </ng-container>
+
+  </div>
+
+
+  <div class="card" *ngFor="let repc of participationResult?.questionResults; let i = index">
+    <div class="card-header">
+      <label class="card-title"> Question {{i+1}}</label>
+    </div>
+    <div class="card-body">
+      <label>{{repc.question.libelle}}</label>
+      <p-table [value]="repc.reponseCandidats">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Réponse</th>
+            <th width="13%" style="text-align: center">Rép. Correcte</th>
+            <th width="13%" style="text-align: center">Votre Rép</th>
+
+
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rep>
+          <tr>
+
+
+            <td>{{rep.reponse.libelle}}</td>
+            <td style="text-align: center"><i
+              [ngClass]="rep.reponse.correct?' sl-icon-check text-success': 'sl-icon-close text-danger'"></i></td>
+            <td style="text-align: center"><i
+              [ngClass]="rep.statut?' sl-icon-check text-success': 'sl-icon-close text-danger'"></i></td>
+
+
+          </tr>
+        </ng-template>
+      </p-table>
+
+    </div>
+  </div>
+</div>
+
+<p-dialog header="Accepter candidature" [(visible)]="visible">
+  <div class="form-group row">
+    <label>Date </label>
+    <input class="form-control" [min]="minDate" type="datetime-local" [(ngModel)]="invitation.dateInvitation">
+  </div>
+  <ng-template pTemplate="footer">
+    <p-button icon="pi pi-check" (click)="accepter($event)" label="Accepter" styleClass="p-button-text"></p-button>
+  </ng-template>
+</p-dialog>
+

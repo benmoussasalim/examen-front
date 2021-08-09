@@ -1,0 +1,48 @@
+<div class="card">
+  <div class="card-header">
+    <countdown *ngIf="configCount" class="btn btn-instagram " [config]="configCount" (event)="handleEvent($event)"></countdown>
+
+
+    <button class="btn btn-success float-right" (click)="terminerExam($event)" >Terminer Examen</button>
+  </div>
+
+
+<div class="card-body">
+
+
+<p-carousel [value]="questions" [numVisible]="1" [numScroll]="1" #carous>
+  <ng-template let-quest pTemplate="item" let-index>
+    <label> Question {{carous.page + 1}} : </label>
+    <textarea class="form-control" readonly autosize style=" resize: none;"
+              [(ngModel)]="quest.question.libelle"></textarea>
+    <div class="card">
+      <div class="card-body">
+        <label> Réponses : </label>
+        <h6 class="card-subtitle">Choix Multiple: {{quest.question.choixMultiple ? 'Oui': 'Non'}}</h6>
+        <div *ngFor="let resp of quest.reponses, let i = index" class="p-field-radiobutton">
+          <div *ngIf="quest.question.choixMultiple">
+             <p-checkbox [inputId]="resp.id" [name]="quest.question.id"
+                         [binary]="true"     [(ngModel)]="resp.statut"  [value]="resp.statut"    (onChange)="checkMultiple(quest.reponses, resp)" ></p-checkbox>
+             <label style="display: inline; margin-left: 10px" [for]="resp.id">{{resp.reponse.libelle}}</label>
+          </div>
+
+          <div *ngIf="!quest.question.choixMultiple">
+            <p-checkbox [inputId]="resp.id" [name]="quest.question.id"
+                        [binary]="true"
+
+                        checkboxIcon="pi pi-circle-on"
+                        [(ngModel)]="resp.statut" (onChange)="checkSingle(quest.reponses, resp)"></p-checkbox>
+            <label style="display: inline; margin-left: 10px" [for]="resp.id">{{resp.reponse.libelle}}</label>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </ng-template>
+</p-carousel>
+
+</div>
+
+
+
+</div>
